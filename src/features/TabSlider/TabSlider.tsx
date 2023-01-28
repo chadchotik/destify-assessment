@@ -36,8 +36,10 @@ export function TabSlider() {
         <Tab 
         key={room?.room[0].id} 
         value={room?.room[0].id} 
-        label={<div className={styles.tabLabel} style={{color: selectedRoomId.selectedRoomId === room?.room[0].id ? '#5defb2' : '#c2c2c2'}}>{room?.room[0]?.roomName}</div>}></Tab>
+        label={<div className={styles.tabLabel} style={{color: selectedRoomId.selectedRoomId === room?.room[0].id ? '#07768d' : '#c2c2c2'}}>{room?.room[0]?.roomName}</div>}></Tab>
         )}
+
+        {/* Excess Data to show Slider Arrows  */}
 
         {/* <Tab label="extra"></Tab>
         <Tab label="extra"></Tab>

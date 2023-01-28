@@ -6,6 +6,13 @@ import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import CheckIcon from '@mui/icons-material/Check';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import EditLocationAltIcon from '@mui/icons-material/EditLocationAlt';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import PersonIcon from '@mui/icons-material/Person';
+import ChildCareIcon from '@mui/icons-material/ChildCare';
+import MeetingRoomIcon from '@mui/icons-material/MeetingRoom';
 
 export function RoomPanel() {
     const [selectedRoom , setSelectedRoom] = useState<any>({});
@@ -20,7 +27,6 @@ export function RoomPanel() {
     [selectedRoomId.selectedRoomId, roomInfoList.roomInfo])
   
    
-    // <div>{selectedRoom?.room[0]?.roomName}</div>
 
     console.log('selectedroom', selectedRoom);
 
@@ -39,6 +45,12 @@ export function RoomPanel() {
         else return `Balance Due - $${balance}`
     }
 
+    const AccordionStyle = {
+        '&:before': {
+          backgroundColor: 'transparent !important',
+        },
+      };
+
 
   return (
     <>
@@ -46,7 +58,11 @@ export function RoomPanel() {
     <>  
         <div className={styles.roomInfoContainer}>
             <div className={styles.roomItemContainer}>
-                <div className={styles.avatarContainer}><Avatar sx={{ bgcolor: '#5eb9e4', height: '60px', width: '60px'}} className={styles.avatar}/></div>
+                <div className={styles.avatarContainer}>
+                    <Avatar sx={{ bgcolor: '#2e96e0', height: '60px', width: '60px'}} >  
+                        <MeetingRoomIcon style={{color : '#47476b', fontSize: '35px'}}/>
+                    </Avatar>
+                </div>
                 <div className={styles.roomTextContainer}>
                     <div className={styles.roomNicknameText}>{selectedRoom?.room[0]?.roomName}</div>
                     <div className={styles.roomSubInfoText}>{`${selectedRoom?.hotel[0]?.hotelName} - ${selectedRoom?.room[0]?.roomType}`}</div>
@@ -66,7 +82,7 @@ export function RoomPanel() {
             <div className={styles.descriptionBadgeContainer}>
                <Chip 
                 icon={ 
-                <Avatar sx={{border: '1px solid green', bgcolor: 'white', height: '20px', width: '20px'}}>
+                <Avatar sx={{border: '2px solid green', bgcolor: 'white', height: '20px', width: '20px'}}>
                     <CheckIcon style={{color : 'green'}}/>
                 </Avatar>
                 }
@@ -78,7 +94,7 @@ export function RoomPanel() {
            
                <Chip 
                 icon={ 
-                <Avatar sx={{border: '1px solid purple', bgcolor: 'white', height: '20px', width: '20px'}}>
+                <Avatar sx={{border: '2px solid purple', bgcolor: 'white', height: '20px', width: '20px'}}>
                     <AttachMoneyIcon style={{color : 'purple'}}/>
                 </Avatar>
                 }
@@ -92,19 +108,47 @@ export function RoomPanel() {
 
             <div className={styles.descriptionText}>{selectedRoom?.hotel[0]?.hotelDescription}</div>
 
-            <div className={styles.modifyContainer}>
-                <div className={styles.modifyAction}>
-                    <EditLocationAltIcon sx={{color: 'teal', marginRight: '10px'}}/> 
-                    <div className={styles.modifyText}>Modify</div>
+            <Accordion sx={AccordionStyle} elevation={0}>
+                <AccordionSummary
+                expandIcon={<ExpandMoreIcon/>}
+                style={{borderBottom: '1px solid rgba(178, 190, 181, 0.5)'}}>
+                
+                <div className={styles.modifyContainer}>
+                    <div className={styles.modifyAction}>
+                        <EditLocationAltIcon sx={{color: 'teal', marginRight: '10px'}}/> 
+                        <div className={styles.modifyText}>Modify</div>
+                    </div>
+                    <div className={styles.modifyAction}>
+                        <Avatar sx={{border: '1px solid teal', bgcolor: 'white', height: '20px', width: '20px', marginRight: '10px'}}>
+                            <AttachMoneyIcon style={{color : 'teal'}}/>
+                        </Avatar>
+                        <div className={styles.modifyText}>Make Payment</div>
+                    </div>
                 </div>
-                <div className={styles.modifyAction}>
-                    <Avatar sx={{border: '1px solid teal', bgcolor: 'white', height: '20px', width: '20px', marginRight: '10px'}}>
-                        <AttachMoneyIcon style={{color : 'teal'}}/>
-                    </Avatar>
-                    <div className={styles.modifyText}>Make Payment</div>
-                </div>
-               
-            </div>
+                </AccordionSummary>
+                <AccordionDetails sx={{padding: 0}}>
+                    <div className={styles.guestContainer}>
+                        <div className={styles.guestText}>Guests in this room</div>
+                        <div className={styles.guestChipContainer}>
+                            {selectedRoom?.travelers.map((traveler : any) =>  <Chip 
+                                icon={traveler.age > 3 ? 
+                                    <PersonIcon style={{color : 'teal'}}/>
+                                    :
+                                    <ChildCareIcon style={{color : 'teal'}}/>
+                             
+                                }
+                                label={<div style={{color: 'teal'}}>{`${traveler.firstName} ${traveler.middleName} ${traveler.lastName}`}</div>}
+                                variant ="outlined"
+                                style={{height: '40px', border: '1px solid teal', borderRadius: '20px', marginRight: '10px'}} 
+                            />
+                            )
+                           
+                            }
+                        </div>
+                    </div>
+                  
+                </AccordionDetails>
+            </Accordion>
         </div>
     </>
     } 

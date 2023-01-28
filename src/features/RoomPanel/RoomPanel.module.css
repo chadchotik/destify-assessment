@@ -60,10 +60,12 @@
     padding: 20px 10px;
     font-size: 15px;
     color: gray;
+    text-align: left;
 }
 
 .modifyContainer {
-    display: flex
+    display: flex;
+    width: 70vh;
 }
 
 .modifyAction {
@@ -75,4 +77,20 @@
     font-size: 15px;
     font-weight: 600;
     color:teal
+}
+
+.guestContainer {
+    text-align: left;
+}
+
+.guestText {
+    font-size: 25px;
+    font-weight: 600;
+    padding: 5px 0px;
+}
+
+.guestChipContainer {
+    margin-top: 20px;
+    margin-left: 10px;
+    display: flex;
 }
