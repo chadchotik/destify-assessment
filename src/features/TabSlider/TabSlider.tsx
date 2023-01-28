@@ -18,6 +18,13 @@ export function TabSlider() {
   };
 
 
+  useEffect(() => {
+    if(!selectedRoomId?.selectedRoomId)
+       dispatch(updateSelectedRoomId(roomInfoList.roomInfo[0].room[0].id))
+  },
+  [roomInfoList])
+
+
   return (
     <Box sx={{ width: '70vh'}}>
       {roomInfoList.roomInfo.length > 0 && 
