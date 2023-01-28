@@ -26,9 +26,6 @@ export function RoomPanel() {
     },
     [selectedRoomId.selectedRoomId, roomInfoList.roomInfo])
   
-   
-
-    console.log('selectedroom', selectedRoom);
 
     const renderRoomStatus = (status: string) => {
         if(status === 'Active') return "Booked"
