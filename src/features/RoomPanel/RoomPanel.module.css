@@ -1,0 +1,78 @@
+.roomInfoContainer {
+    /* background: gray; */
+    width: 70vh;
+}
+
+.roomItemContainer {
+    padding: 25px 35px;
+    display: flex;
+    font-size: 22px;
+}
+
+.roomTextContainer {
+    flex-direction: column;
+    text-align: left;
+}
+
+.avatarContainer {
+    padding-top: 6%;
+    margin-right: 30px;
+}
+
+.roomNicknameText {
+    margin-bottom: 5px;
+}
+
+.roomSubInfoText{
+    color: gray;
+    margin-bottom: 2px
+}
+.moreVertContainer {
+    padding-top: 8%;
+    margin-left: auto;
+    color:gray
+}
+
+.moreVertIcon{
+    font-size: 40px !important;
+    cursor: pointer;
+}
+
+.imageContainer {
+    width:70vh;
+    /* height: 200px; */
+}
+
+.image {
+    width: 100%;
+    height: 100%;
+}
+
+.roomDescriptionContainer {
+    width: 70vh;
+}
+
+.descriptionBadgeContainer {
+    text-align: left;
+}
+
+.descriptionText {
+    padding: 20px 10px;
+    font-size: 15px;
+    color: gray;
+}
+
+.modifyContainer {
+    display: flex
+}
+
+.modifyAction {
+    display: flex;
+    margin-right: 20px;
+}
+
+.modifyText{
+    font-size: 15px;
+    font-weight: 600;
+    color:teal
+}
